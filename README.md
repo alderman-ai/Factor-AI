@@ -14,8 +14,8 @@ New to the repo? Read in this order:
 
 1. **This file** — what the project is and where it's going.
 2. **[`CLAUDE.md`](CLAUDE.md)** — the standing contract the assistant operates under. Coaching posture, refusal conditions, behaviours to avoid.
-3. **[`The Lab/Ontology.md`](The%20Lab/Ontology.md)** and **[`The Lab/Lexicon.md`](The%20Lab/Lexicon.md)** — the vocabulary. Nothing else makes sense without it.
-4. **[`Ore patches/Miner-001-Science/Science Ore Patch.md`](Ore%20patches/Miner-001-Science/Science%20Ore%20Patch.md)** — a real template, carrying its own fill contract in the body.
+3. **[`The Lab/Ontology.md`](Ontology.md)** and **[`The Lab/Lexicon.md`](Lexicon.md)** — the vocabulary. Nothing else makes sense without it.
+4. **[`Ore patches/Miner-001-Science/Science Ore Patch.md`](Science%20Ore%20Patch.md)** — a real template, carrying its own fill contract in the body.
 5. **[`The Ship/Ship's Computer Entries/`](The%20Ship/Ship's%20Computer%20Entries/)** — session logs, including what went wrong.
 6. **`git log`** — see below. The commit messages are the primary narrative.
 

@@ -58,9 +58,9 @@ Short answer fine. Replace the null with your answer.
 Null
 ```
 
-## Q1
+## Q3
 What was the key lesson in detail? 
-### A1
+### A3
 Answer at length (~2-8 paragraphs) form, and include all context of the lesson within the answer. Do not make it necessary to view an external document for more context. 
 
 ```
