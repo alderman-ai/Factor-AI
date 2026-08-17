@@ -51,15 +51,35 @@ python pumpjack.py --project C--Users-alder-Desktop-Factor-AI-The-Ship --date 20
 Re-running is safe and idempotent for finished sessions: same input, same
 output filenames, overwritten in place.
 
-## Two things the first extraction taught us
+## Three things the first extraction taught us
 
-**Reasoning is not in the crude.** Claude Code's stored JSONL keeps each
-thinking block's signature but strips its text. Across the first three
-sessions: 100 thinking blocks, 0 with retained content. The transcripts capture
-what was said and done, never what was thought. Any refinery built on this has
-to extract lessons from visible output alone — the reasoning that produced a
-decision is gone, and only its conclusion survives. Blocks are counted in each
-transcript header so the absence stays visible rather than silent.
+**Reasoning is not in the crude, and no better script will recover it.** Each
+thinking block is stored with an empty `thinking` field and a populated
+`signature`. The signature is a protobuf blob whose payload is encrypted — its
+only plaintext is metadata (model name, block type, a UUID). It exists so the
+API can verify thinking blocks on replay, not so anyone can read them.
+
+This was checked rather than assumed. A search across the whole of
+`~/.claude/` for any file containing a non-empty `"thinking"` value returns
+nothing — not in the project storage, not in `sessions/`, `cache/`,
+`backups/`, or `history.jsonl`. Across the first three sessions: 100 thinking
+blocks, 0 with retained text.
+
+The consequence is structural. Transcripts hold what was said and done, never
+what was thought, so a refinery has to derive lessons from visible output
+alone — conclusions survive, the reasoning that produced them does not. Blocks
+are counted in each transcript header so the absence stays visible rather than
+silent. **If reasoning matters for a given decision, it has to be said out loud
+in the session**, where it lands in the crude like anything else.
+
+**Large tool results are not in the JSONL either.** Claude Code spills them to
+`<session-id>/tool-results/toolu_*.txt` beside the transcript, and the JSONL
+does not reference the path — the files are keyed by tool_use id and found by
+convention. Copying only the JSONL silently drops them. Worse, the spill has a
+size threshold, so a naive extractor works correctly right up until it doesn't:
+of the first three sessions, two had spilled files and one had none. The
+pumpjack now copies the whole sidecar directory alongside the crude and notes
+the count in the transcript header.
 
 **A live session cannot be finalised.** Extracting the currently-running
 session copies a mid-session snapshot; the source file keeps growing after the

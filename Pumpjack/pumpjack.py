@@ -104,7 +104,7 @@ def render_blocks(blocks, out):
             out.append("")
 
 
-def render_session(records, session_id, source_path, crude_name):
+def render_session(records, session_id, source_path, crude_name, sidecar_count=0, base=""):
     """Turn a session's records into an attributed markdown transcript."""
     turns = [r for r in records if r.get("type") in ("user", "assistant")]
     if not turns:
@@ -159,6 +159,11 @@ def render_session(records, session_id, source_path, crude_name):
         )
     out.append(f"| Source | `{source_path}` |")
     out.append(f"| Crude | `crude/{crude_name}` |")
+    if sidecar_count:
+        out.append(
+            f"| Spilled tool results | {sidecar_count} file(s) in "
+            f"`crude/{base}_tool-results/` — not present in the JSONL |"
+        )
     out.append("")
     out.append("---")
     out.append("")
@@ -234,20 +239,38 @@ def main():
         crude_name = f"{base}.jsonl"
 
         shutil.copy2(jsonl, CRUDE_DIR / crude_name)
-        name, md = render_session(records, session_id, str(jsonl), crude_name)
+
+        # Large tool results do not live in the JSONL. Claude Code spills them
+        # to <session-id>/tool-results/toolu_*.txt and the JSONL does not even
+        # reference the path -- the files are keyed by tool_use id and found by
+        # convention. Copying only the JSONL silently loses them, and the
+        # overflow threshold means a naive extractor works until it doesn't.
+        sidecar_src = src_dir / session_id / "tool-results"
+        sidecar_count = 0
+        if sidecar_src.is_dir():
+            sidecar_dst = CRUDE_DIR / f"{base}_tool-results"
+            if sidecar_dst.exists():
+                shutil.rmtree(sidecar_dst)
+            shutil.copytree(sidecar_src, sidecar_dst)
+            sidecar_count = sum(1 for _ in sidecar_dst.iterdir())
+
+        name, md = render_session(records, session_id, str(jsonl), crude_name, sidecar_count, base)
         if md is None:
             continue
         (TRANSCRIPT_DIR / f"{name}.md").write_text(md, encoding="utf-8")
 
-        extracted.append((name, len(probe), (CRUDE_DIR / crude_name).stat().st_size))
+        extracted.append(
+            (name, len(probe), (CRUDE_DIR / crude_name).stat().st_size, sidecar_count)
+        )
 
     if not extracted:
         print(f"No sessions found for {args.date} in {args.project}")
         return
 
     print(f"Extracted {len(extracted)} session(s) for {args.date}:\n")
-    for name, turns, size in extracted:
-        print(f"  {name}  —  {turns} turns, {size:,} bytes crude")
+    for name, turns, size, sidecars in extracted:
+        extra = f", +{sidecars} spilled tool-result file(s)" if sidecars else ""
+        print(f"  {name}  -  {turns} turns, {size:,} bytes crude{extra}")
 
 
 if __name__ == "__main__":
