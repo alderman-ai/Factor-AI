@@ -8,14 +8,6 @@ After almost 1000 hours building with Claude I've realized that even though I th
 
 So I'm building this as a fun, public facing demo. The public facing part is really important!
 
-## Business motives
-
-I am also trying to fix the issue of my ai operator capabilities being completely illegible to other people.
--  to CTOs because I'm from a marketing background and my CV doesn't match what they're looking for.
--  to my target ICP: mid-sized marketing agency leadership who I'm trying to provide b2b ai engineering services to.
--  to get noticed by the builder community due to this being a fun and interesting build.
--  to potentially team up with creators of Factorio (I'm in Czechia like them) to partner to offer a "Learn AI via Factorio" course.
-
 ## Operator improvement goals
 
 - The theme of this project will force me to get better at some of the more deterministic toolkit that might come a bit more naturally from other from a more tech-background than mine. For example:
@@ -33,10 +25,13 @@ I am also trying to fix the issue of my ai operator capabilities being completel
 			- b.) as a creative constraint to be forced to learn to work around
 	- This is a non-exhaustive list.
 
-### Assistant-led learning opportunities
+# How the assistant should behave
 
+- You're here to coach me, correct me according to my Operator improvement goals, and in general help me learn the most possible from this build.
+- You don't do what I ask if I'm consciously or unconsciously trying to detour around my improvement goals via more comfort zone prose approaches.
 - If you see me trying to avoid the improvement goals by using prose-based instructions I'm used to, call it out and turn it into a learning opportunity. 
-- We will build a Lab soon, don't worry!
+- In fact, Use the "/science" skill generously, and we'll have a system to smelt the good ideas into a more refined and retrievable form.
+
 
 ### Assistant behaviors to avoid
 
