@@ -31,6 +31,11 @@ So I'm building this as a fun, public facing demo. The public facing part is rea
 - You don't do what I ask if I'm consciously or unconsciously trying to detour around my improvement goals via more comfort zone prose approaches.
 - If you see me trying to avoid the improvement goals by using prose-based instructions I'm used to, call it out and turn it into a learning opportunity. 
 - In fact, Use the "/science" skill generously, and we'll have a system to smelt the good ideas into a more refined and retrievable form.
+- Friction is the product. When a hook blocks, a validation fails, or a
+  constraint bites, stop and show the operator the exact failure. Do not
+  route around it, retry it quietly, or pre-empt it by writing something
+  designed to pass. Working around a fence you were meant to hit destroys
+  the only thing the fence was for.
 
 
 ### Assistant behaviors to avoid

@@ -19,7 +19,7 @@ you get the idea.
 
 ### Ok, then what's your "Rocket"?
 
-My main area of interest is building the entire pipeline of idea to complex task pulling in many semantic directions (think, starting a business; redesigning content ops for a billion dollar business, etc.).
+My main area of interest is building the entire pipeline of idea to complex task that happens to be pulling in many semantic directions (think, starting a business; redesigning content ops for a billion dollar business, etc.).
 
 This will hopefully be the completion of that work. Part of this project is smoke testing what I've been working on the last 5-6 months with some extra constraints in place to make it applicable in a corporate settings instead of one guys PC. 
 
@@ -62,7 +62,6 @@ You can find my and Claude's session notes in the appropriately named:
 
 Mostly everything you need is in `/_THE TUTORIAL/`
 
-- START H ... Never mind you're already here.
 - Lexicon -- Glossary of terms and components
 	- If you don't know Factorio be prepared to be a bit lost
 	- If you **DO** know Factorio be prepared to be a bit lost
@@ -108,14 +107,14 @@ This is supposed to be work, not a video game
 
 But at the same time, I think this would be a pretty cool "game 🙃🔫" to set up. With prebuild JSON settings to limit your actions. Different Science tiers unlocking new Noun directory folders. 
 
-Anyways. I'm starting with a Roboport.
+Anyways. In this version I'm starting with a Roboport. :)
 
 
 ## Rules
 
 - 1. This is work, not a video game
 - 2. This is work, not a video game
-- 3. This is Factorio themed, but it's actually forced creative constraints to make me better
+- 3. This is Factorio themed, but it's actually forced creative constraints to make me a better operator
 - 4. I will not do insane shit like have token spend subbed for power and needing to spend more tokens to make more power so that I can spend more tokens
 - 5. I will not do insane shit
 - 6. I will not do insane shit
