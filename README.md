@@ -1,111 +1,123 @@
-# Factor-AI
+# Start here
 
-**Building an AI harness the way you'd build a Factorio base — in public, mistakes included.**
+# What's Factor-AI?
 
-After roughly a thousand hours building with Claude and a similar thousand hours in Factorio over the last decade, I noticed something: the game had quietly taught me how to think about systems. Throughput. Bottlenecks. Ratios. When to build ugly and when to tear it down. Buffers, backpressure, and the discipline of not optimising a process you haven't run yet.
+- An homage to my favorite game that I loved to hate
+- An actual repo I can make public and show my work
+- A (honestly pretty brutal) set of creative constraints to level up
+- A pretty well designed tutorial for my key study goals
+- A hopefully interesting project that may catch some CTOs eye ... 👀
+- A massive ADHD-fueled procrastination exercise
 
-This repo is what happens when I stop treating that as a coincidence and build an AI engineering harness on those principles deliberately.
+## What's your DoD?
 
----
+**Launching a rocket, of course.**
 
-## Start here
+If you don't know, that's the point of the original game, but to get there required a massively coordinated system of inputs, outputs, and transports of those to be combined in new outputs for new inputs and ...
 
-New to the repo? Read in this order:
+you get the idea.
 
-1. **This file** — what the project is and where it's going.
-2. **[`CLAUDE.md`](CLAUDE.md)** — the standing contract the assistant operates under. Coaching posture, refusal conditions, behaviours to avoid.
-3. **[`The Lab/Ontology.md`](Ontology.md)** and **[`The Lab/Lexicon.md`](Lexicon.md)** — the vocabulary. Nothing else makes sense without it.
-4. **[`Ore patches/Miner-001-Science/Science Ore Patch.md`](Science%20Ore%20Patch.md)** — a real template, carrying its own fill contract in the body.
-5. **[`The Ship/Ship's Computer Entries/`](The%20Ship/Ship's%20Computer%20Entries/)** — session logs, including what went wrong.
-6. **`git log`** — see below. The commit messages are the primary narrative.
+### Ok, then what's your "Rocket"?
 
----
+My main area of interest is building the entire pipeline of idea to complex task pulling in many semantic directions (think, starting a business; redesigning content ops for a billion dollar business, etc.).
 
-## Why Factorio
+This will hopefully be the completion of that work. Part of this project is smoke testing what I've been working on the last 5-6 months with some extra constraints in place to make it applicable in a corporate settings instead of one guys PC. 
 
-You don't need to have played it. Three ideas do all the work:
+Literally, DoD is to mechanically take an idea down the conveyer belt:
+	- into BoN tasks, operator picks the best interpretation of what he meant
+	- approved tasks go to Splitter, which will "weigh" the size of the task to whether it will stay a task, become a full executable spec, a project which gets decomposed into a batch of executable specs
+		- (**I will probably stop here** -- but there is one level of abstraction higher)
+- But in between there are a LOT of steps. Fun steps. 
+	- Steps which are taken me a while to warm up to sharing.
+		- But I probably will because Hubspot is prob working on this too :)
 
-**Everything is a throughput problem.** A factory is judged on one number — science per minute. Beautiful infrastructure producing nothing is a failed factory. The same is true of a knowledge system: capture is not the point, retrieval is.
+# Reading List
 
-**Constraints beat instructions.** In Factorio you can't build a machine you don't have the materials for. It isn't a rule you agree to follow, it's a fact about the world. Most AI harnesses enforce their rules with prose in a prompt, which degrades exactly when you need it most. This project keeps asking: can this rule be made of resources instead of requests?
+Everything is still chaos, but as it comes together, these should be the places to make sense of things. 
 
-**You will tear it down, and that's fine.** Your first base is spaghetti. Its job isn't to be good, it's to fund the next one. Building it is how you learn what the requirements actually were.
+## Daily (?) Updates
 
-The theme is a design constraint, not a costume. Where it sharpens a decision it stays; where it would only be decoration it gets dropped. Three times in the first session the design got *better* by deliberately departing from the game.
+You can find my and Claude's session notes in the appropriately named:
+- The Ship/Distress Beacon/Captains Log Entries/ -- me
+- The Ship/Distress Beacon/Ship's Computer Entries/ -- it
 
----
+## Operator improvement goals
 
-## The Rocket
+- The theme of this project will force me to get better at some of the more deterministic toolkit that might come a bit more naturally from other from a more tech-background than mine. For example:
+  
+	- System architecture / design
+	- Traceable routing
+	- Loops
+	- YAML frontend
+	- pre-tool hooks
+		- especially around enforcing fence for creative constraints -- no cheating!
+	- granular subagent settings
+	- Clobber prevention with multiple parallel, working directory sessions on the same local machine / repo
+		- Not using separate worktrees though
+			- a.) this is about artifakt logistics, everyone needs to see the same state
+			- b.) as a creative constraint to be forced to learn to work around
+	- This is a non-exhaustive list.
 
-Factorio gives you one win condition: launch a rocket. Without one, there is no "done," only "more" — which is exactly how the game eats weekends.
+## Project Orientation
 
-**This project's rocket:**
+Mostly everything you need is in `/_THE TUTORIAL/`
 
-> A fully working pipeline from an idea, to a complex project charter, decomposed into specs, each one-shot with no human in the loop — and the result *actually* meeting the entire charter's Definition of Done.
+- START H ... Never mind you're already here.
+- Lexicon -- Glossary of terms and components
+	- If you don't know Factorio be prepared to be a bit lost
+	- If you **DO** know Factorio be prepared to be a bit lost
+- YAML Schema/ -- yeah. this is insane. i'm insane. 
+	- Miners/Miner-001-Science/CL-Science Ore Patch/Science Ore Patch_v1
+- Ontology/ -- Basically the long version of the rules, how everything interacts
 
-Not "produces plausible output." Meets the DoD, verifiably, without someone stepping in to clarify what was meant.
+# How does Factorio inspire you?
 
-### Tech tiers
+Back when I still made any money I was a senior freelance b2b marketer I played a lot of Factorio. I always am honest that **I am not from a tech background.** But what I also forgot to mention is that my almost 1000 hours in Factorio is actually SOMEWHAT of a substitute for a dev background and it **massively impacts the way I approach automation in building ai**
 
-Milestones on the way, each publishable on its own:
+- Do it manually several times before templating
+- Template before automating
+- If you want to punch your computer you're doing it right
+- STOP STARTING OVER AND LAUNCH THE DAMN ROCKET!
 
-| Tier | Milestone | Status |
-|---|---|---|
-| 🔴 Red | One artifact through the full template contract, manually triggered | **In progress** |
-| 🟢 Green | Mining automated, constraints enforced by the harness, throughput matched to demand |  |
-| 🔵 Blue | One charter decomposes into N specs with bidirectional traceability |  |
-| 🟣 Purple | One spec, one-shot, no HITL, verified against its DoD |  |
-| 🚀 Rocket | End to end |  |
+### What do you mean do things manually?
 
----
+- By manual, I mean I write much more in Obsidian than the terminal. 
+- My main area of interest is complex task decomp into fully executable specs
+- Many of my days included spending 3-5 hours writing a detailed, structured spec
+- The sections that earned their weight became conditional sections in a library
+- Now specs are slowly approaching being automated
+	- (manual -> template - (after data) -> automated - (after even more data)
 
-## What I'm trying to get better at
+# How can you follow along?
 
-I came to this from marketing, not engineering. The theme exists to force me into the deterministic toolkit that comes more naturally to people with a traditional technical background:
+Well, once I collect 100 green science I can start a blog...
 
-- System architecture and design
-- Traceable routing
-- Loops
-- YAML frontmatter as a real schema, not decoration
-- Pre-tool hooks — especially enforcing creative constraints so the assistant *can't* cheat
-- Granular subagent configuration
-- Clobber prevention across parallel sessions on one machine and one repo — **without** separate worktrees, partly because every session must see the same state, and partly as a constraint worth learning to work around
+No, just kidding. I will start posting daily "Engineering Notes" on this and other projects soon. I'm currently rebuilding my website to accommodate this.
 
-The assistant in this repo is configured to coach rather than execute, and to refuse work that routes around those goals via the prose-shaped comfort zone I'd otherwise default to.
+But you can follow along here in the repo. I'll update once site is ready
 
----
+## You seem like a person I'd like to hire
 
-## How to follow along
+alexataldermandotai
 
-**Engineer notes**, published every 1–3 days.
+# Outro and rules of Faktor-AI
 
-**The commit log is the real story.** Commits are written as narrative — what was decided, why, what was rejected, and what question it leaves open for next time. They're meant to be read, not just diffed:
+This is supposed to be work, not a video game
+This is supposed to be work, not a video game
+This is supposed to be work, not a video game
 
-```bash
-git log --format="%h  %s%n%n%b"
-```
+But at the same time, I think this would be a pretty cool "game 🙃🔫" to set up. With prebuild JSON settings to limit your actions. Different Science tiers unlocking new Noun directory folders. 
 
-**Failures are in there too.** Session logs record what the assistant got wrong, not just what got built. In the first session alone that included claiming a constraint was enforced when nothing enforced it, and over-engineering the fix once caught.
+Anyways. I'm starting with a Roboport.
 
----
 
-## Repo map
+## Rules
 
-| Path | What it is |
-|---|---|
-| `The Ship/` | Where we crashed. A read-only hold — it provides, nothing writes back to it. Starting items, and the session logs. |
-| `The Lab/` | The knowledge base. Ontology, lexicon, taxonomy. Deliberately *not* globally loaded — availability on request, not by default. |
-| `Blueprint Book/` | Where workflows and reusable builds get designed. |
-| `Ore patches/` | Templates and the machinery that mints copies of them. Nothing in this system outputs a free-form document; the only legal output is a filled-in copy of a template that already exists. |
-
----
-
-## Current state
-
-Red tier, in progress. The template system exists, five blanks are mined, and fifteen learnings are staged in the commit log waiting on two open design decisions before the first one can be processed.
-
-Zero output so far. Which, if the Factorio framing is worth anything, is exactly the number that should be bothering me most.
-
----
-
-*Built with [Claude Code](https://claude.com/claude-code). Not affiliated with Wube Software.*
+- 1. This is work, not a video game
+- 2. This is work, not a video game
+- 3. This is Factorio themed, but it's actually forced creative constraints to make me better
+- 4. I will not do insane shit like have token spend subbed for power and needing to spend more tokens to make more power so that I can spend more tokens
+- 5. I will not do insane shit
+- 6. I will not do insane shit
+- 7. The boundary between creative constraints and insanity is a thin, moving line
+- 8. I will focus on getting a job at some point
