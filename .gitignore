@@ -1,0 +1,15 @@
+# Obsidian — local UI state, not worth versioning
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.trash/
+
+# OS cruft
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Secrets
+.env
+.env.*
+*.key
