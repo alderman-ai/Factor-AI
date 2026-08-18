@@ -44,4 +44,13 @@ Not skills. Invoked by name, or by a skill.
 `enter-hyperspeed` still invokes `_THE VAST UNKNOWN/.venv/Scripts/python.exe` —
 the interpreter inside the disposable, scuttled world. `chart-course` was fixed
 to plain `python`; this one was not. It has not been changed here because
-nobody ruled on it. It will fail the moment the venv goes.
+nobody ruled on it. It has not bitten yet only because the scuttle used
+`git rm --cached`, which left the venv sitting on disk.
+
+**Swapping in plain `python` will not be enough.** The run-002 autopsy found a
+second layer nobody had named: `enter_hyperspeed.py` imports `yaml`, and the
+only place that dependency is declared is `_THE VAST UNKNOWN/pyproject.toml` —
+the disposable world's manifest carrying the durable Ship's dependency, for a
+package the engine itself never imports. Fixing the interpreter without moving
+the declaration trades one failure for another. See
+`_EJECT BUTTON/RUN-002-Autopsy.md`.
