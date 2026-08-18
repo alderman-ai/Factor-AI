@@ -61,19 +61,31 @@ You can find my and Claude's session notes in the appropriately named:
 
 ## Project Orientation
 
-Mostly everything you need is in `/_THE SHIP/Hitchhiker's Guide/`
+Every folder in `_THE SHIP/` now carries a `README.md` saying what it is for,
+and the ones whose contents accrete also carry an `INDEX.md` routing to what is
+inside. Start at `_THE SHIP/INDEX.md` and follow it down.
 
-- Lexicon.md -- Glossary of terms and components
+The rules live in `/_THE SHIP/Hitchhiker's Guide/`
+
+- `Ontology/` -- the long version of the rules, how everything interacts
+- `Schema/` -- the master forms the scripts actually consume. Break the shape
+  and a script refuses rather than adapting.
+	- Example: `_THE SHIP/Fireproof Safe/Ancient Artifacts/Science Ore Patch.md`
+	- yeah. this is insane. i'm insane.
+- `Instruction Manual/Purpose of Factor-AI/` -- why this exists and what
+  winning looks like
+
+The glossary is one folder over, in the operator's shelf rather than the rules:
+
+- `_THE SHIP/Fireproof Safe/Ancient Artifacts/Lexicon.md` -- glossary of terms
+  and components
 	- If you don't know Factorio be prepared to be a bit lost
 	- If you **DO** know Factorio be prepared to be a bit lost
-- Template Schema/ -- yeah. this is insane. i'm insane. 
-	- Example: `_THE SHIP/Fireproof Safe/Ancient Artifacts/Science Ore Patch.md`
-- Ontology/ -- Basically the long version of the rules, how everything interacts
 
 Two more places worth knowing about:
 
-- `_THE SHIP/SatNav/` -- the navigation log. Session transcripts and science
-  entries land in `Incoming Transmissions/`.
+- `_THE SHIP/SatNav/` -- the navigation log, and the knowledge base it feeds.
+  Session transcripts and science entries land in `Incoming Transmissions/`.
 - `_THE SHIP/_EJECT BUTTON/` -- how a run gets scuttled, and how to read the
   run boundaries in git afterwards.
 
