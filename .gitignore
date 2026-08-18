@@ -18,3 +18,10 @@ desktop.ini
 .venv/
 __pycache__/
 *.egg-info/
+
+# The vast unknown — the planet is disposable and lives on disk only.
+# RUN_002/BITER_ATTACK!! scuttled the engine with `git rm --cached`, so every
+# file is still on disk and still untracked. This keeps a stray `git add -A`
+# from silently re-tracking a world that was deliberately ended.
+# A new engine enters the repo on purpose or not at all: `git add -f`.
+_THE VAST UNKNOWN/

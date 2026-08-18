@@ -5,17 +5,22 @@ Run: "002"
 
  We've landed on this strange planet. I wonder what awaits us in this **vast unknown**.... 
 
-## the-vast-unknown (MCP)
+## the-vast-unknown (MCP) — UNPLUGGED
 
-- The world engine is the MCP server `the-vast-unknown` (registered in the
-  repo-root `.mcp.json`, but with paths relative to `_THE SHIP` — the Ship is
-  the assumed cwd for reaching the engine. A session started anywhere else in
-  this repo will fail to connect, by design. Config changes need a session
-  restart).
-- On session start: call the engine's `scan` tool with `guy_handle: "the-guy"`.
-  If it answers, report the sensor sweep and pick up the run in progress.
-  If the tool is missing, say so plainly and stop — the server isn't
-  connected. Don't hunt for workarounds.
-- Never read or edit files in `_THE VAST UNKNOWN/` — the engine and its
-  world content are off-limits to Ship sessions. Play the world through
-  the engine's tools, not the file system.
+- There is no world engine right now. When run 002 ended, its world and the
+  server that ran it were removed from git tracking — they are still on disk —
+  and `c980856` deleted `the-vast-unknown` from the repo-root `.mcp.json`, which
+  is now empty. Do not call `scan`. Do not go looking for the server. Its
+  absence is deliberate, not a fault to diagnose.
+- On session start: read `_EJECT BUTTON/` instead of sweeping sensors. The
+  README, the Biter Attack Ritual, and `RUN-002-Assistant-Report.md` are where a
+  session picks up what is in progress.
+- We are between runs — after the `RUN_002/BITER_ATTACK!!` tag and before the
+  next `SAME_SHIP_DIFFERENT_DAY` tag. There is no world to play until that tag
+  lands.
+- Never read or edit files in `_THE VAST UNKNOWN/`. The fence outlives the
+  engine: the old engine's files are still on disk, still off-limits, and the
+  vault is now gitignored so nothing there re-enters the repo by accident.
+- When a new engine is registered, replace this whole section with what it
+  actually is. A section describing an engine that isn't connected is the exact
+  failure `e7b7b1a` was written to end.
