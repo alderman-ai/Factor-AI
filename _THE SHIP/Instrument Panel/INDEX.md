@@ -10,6 +10,10 @@
 This file accretes. `README.md` does not.
 
 **What used to be here:** `chart-course.md` and `enter-hyperspeed.md`, full
-byte-identical copies of their `.claude/skills/*/SKILL.md` bodies. They were
-hand-synced and had already drifted. Replaced by `Ship Capabilities.md`, which
-describes the skills without duplicating them.
+copies of their `.claude/skills/*/SKILL.md` bodies. They were hand-synced and
+had already drifted. Replaced by `Ship Capabilities.md`, which describes the
+skills without duplicating them.
+
+`chart-course` itself no longer exists — `eject-mission` absorbed it, and is
+deployed at both repo root and `_THE SHIP/` so it is reachable from cloud and
+mobile sessions, which are root-only.

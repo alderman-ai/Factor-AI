@@ -6,8 +6,13 @@ The file half of a run transition. Read alongside `Commit Ritual.md`.
 Nothing here creates a commit, and nothing there moves a file. Where a step does
 both, it is split across the two documents and each names the other.
 
-Called by the `chart-course` skill, which will not stamp a new world until this
+Called by the `eject-mission` skill, which will not stamp a new world until this
 document has been read and every artifact it touches has a rule.
+
+`eject-mission` absorbed `chart-course`, which no longer exists. The merge
+matters here: the Ship's one commit now happens **before** these moves, in the
+same skill run. A report describing a state that no commit holds was the flaw
+that ordering exists to prevent.
 
 ---
 

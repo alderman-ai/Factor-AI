@@ -2,32 +2,52 @@
 
 Every skill deployed in this repo, what it does, and where it is loaded from.
 
-**This page is a directory, not a copy.** It replaces the two full skill bodies
+**This page is a directory, not a copy.** It replaced the two full skill bodies
 that used to sit in this folder — `chart-course.md` and `enter-hyperspeed.md`
-were byte-identical duplicates of their `SKILL.md` files and had already begun
-to drift. There is now exactly one copy of every skill, and it is the one Claude
-Code actually loads.
+were hand-synced duplicates of their `SKILL.md` files and had already drifted.
+Nothing here restates a skill's body; it says what each one does and where it
+loads from.
+
+Where a skill *is* deployed twice, that is deliberate and stated, the copies are
+byte-identical, and there is a command below that checks it.
 
 ## Where skills load from
 
 Claude Code loads skills from `.claude/skills/` **relative to the working
-directory the session was started in.** A session started at repo root sees the
-root set. A session started at `_THE SHIP/` sees the Ship's set.
+directory the session was started in.** A root session sees the root set; a
+session started at `_THE SHIP/` sees the Ship's set. Nothing is inherited.
 
-Right now that distinction is theoretical: **all four skills live at repo root
-and `_THE SHIP/.claude/` does not exist.** Whether run rituals should move to a
-Ship-local set — and what a root session should get when it types a Ship-owned
-command — is an open decision (R6 of the batch request, returned for a new
-proposal). Until it is ruled, this table has one column of homes, not two.
+That cuts against how the operator actually works: **cloud and mobile sessions
+are repo-root only**, and changing directory on a phone is painful. A
+run-boundary skill reachable only from the Ship would be unreachable most of
+the time. So the run ritual is deployed at **both** levels rather than stubbed.
 
 ## Deployed skills
 
 | Skill | Loaded from | Invoked by | What it does |
 |---|---|---|---|
-| `chart-course` | root | `/chart-course` | Drives the gap between runs. Verifies the dead run was actually closed out — headstone tag present, assistant report filed, working tree clean — then runs the File Move Ritual and stamps a blank `New World Coordinates` form onto this Panel. **Gates, does not automate:** it performs no commit, tag, or push, and it refuses to cross the gap if the previous run was never closed. |
+| `eject-mission` | **root and Ship** | `/eject-mission` | Ends the run and opens the gap before the next. Gates first, then files the assistant report, deregisters the engine, makes the Ship's one and only commit, runs the File Move Ritual and stamps the next blank form. **Never tags and never pushes.** Absorbed `chart-course`, so the commit and the file move cannot be separated. |
 | `enter-hyperspeed` | root | `/enter-hyperspeed` | Validates the filled `New World Coordinates` form on this Panel and emits the engine JSON into `_THE VAST UNKNOWN/Crash Sites/`. Refuses on an incomplete form and will not fill a field for you. Terminal stage 03 (Process) of the loop. |
-| `science` | root | `/science`, or on the assistant's own initiative | Captures one lesson from the current session as a structured entry in `_THE SHIP/SatNav/Incoming Transmissions/`. Records who invoked it, why, and the lesson in full self-contained detail. This is the mechanism that feeds the Key Long-term Output; it is meant to be used generously. |
-| `obsidian-sync` | root | `/obsidian-sync` | Forces a sync of the local vault through Obsidian Sync using the headless `ob` CLI. Hard-halts unless it is running in a local CLI session on the operator's desktop machine — never in a cloud or web session. |
+| `science` | root | `/science`, or on the assistant's own initiative | Captures one lesson from the current session into `_THE SHIP/SatNav/Incoming Transmissions/`. Feeds the Key Long-term Output; meant to be used generously. Ruled to be duplicated at both levels — a lesson cannot survive a `cd`, so a stub would be worthless. **Not yet duplicated.** |
+| `obsidian-sync` | root | `/obsidian-sync` | Forces a sync of the local vault through the headless `ob` CLI. Hard-halts outside a local CLI session on the operator's desktop. Ruled to graduate to user level (`~/.claude/skills/`). **Not yet moved.** |
+
+### The `eject-mission` pair
+
+The two copies are **byte-identical**, and the skill is written to make that
+possible: every path in it resolves from `git rev-parse --show-toplevel` at
+runtime, so nothing is cwd-relative and neither copy needs adjusting.
+
+Check they still match:
+
+    diff .claude/skills/eject-mission/SKILL.md          "_THE SHIP/.claude/skills/eject-mission/SKILL.md"
+
+Silence means they match. **Edit one, edit the other in the same commit.**
+
+One thing holds this together for free: the Ship's fence hook blocks writes to
+`_THE SHIP/.claude/`, so a Ship session **cannot** edit its own copy. Both
+copies can only be changed from root, which is the one place a change can be
+made to both at once. The self-protection rule turns out to double as a
+sync guarantee.
 
 ## Durable scripts
 

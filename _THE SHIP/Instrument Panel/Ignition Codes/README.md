@@ -11,11 +11,20 @@ that does not.
 
 ## The rule that got learned here the hard way
 
-**A durable script may not invoke a disposable interpreter.** Both loop skills
+**A durable script may not depend on a disposable anything.** Both loop skills
 once called `_THE VAST UNKNOWN/.venv/Scripts/python.exe` — tooling that survives
-every reset, reaching into the one directory guaranteed to be destroyed.
-`chart-course` has been fixed to plain `python`. `enter-hyperspeed` has not, and
-is recorded as known drift in `Ship Capabilities.md`.
+every reset, reaching into the one directory guaranteed to be destroyed. Both
+now use plain `python`.
+
+The interpreter was only the visible half. `enter_hyperspeed.py` also imported
+`yaml`, and the sole declaration of that dependency lived in the engine's
+`pyproject.toml` — the disposable world's manifest carrying the durable Ship's
+dependency, for a package the engine never imported itself. That was removed
+rather than relocated: the frontmatter is parsed by hand now, and **these
+scripts have no third-party dependencies at all.**
+
+Keep it that way. A durable script that needs something installed is the same
+fault as one that needs the planet mounted, only slower to notice.
 
 ## Refusals
 
