@@ -8,8 +8,10 @@ Run: "002"
 ## the-vast-unknown (MCP)
 
 - The world engine is the MCP server `the-vast-unknown` (registered in the
-  repo-root `.mcp.json`; loads for sessions started anywhere in this repo;
-  config changes need a session restart).
+  repo-root `.mcp.json`, but with paths relative to `_THE SHIP` — the Ship is
+  the assumed cwd for reaching the engine. A session started anywhere else in
+  this repo will fail to connect, by design. Config changes need a session
+  restart).
 - On session start: call the engine's `scan` tool with `guy_handle: "the-guy"`.
   If it answers, report the sensor sweep and pick up the run in progress.
   If the tool is missing, say so plainly and stop — the server isn't
