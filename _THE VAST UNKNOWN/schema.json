@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Cartridge schema. PLACEHOLDER pending blocking decision 02 (what fields must a thing have). Strictness is the point: nothing untyped gets in, even now.",
+  "title": "Cartridge schema v1 — the operator's thing-schema, ruled 2026-08-18 (Open Questions Q2). A thing is a file or folder in the vault; Visible says whether the operator has discovered it yet. Strict: nothing untyped gets in.",
   "type": "object",
   "properties": {
     "objects": {
@@ -8,9 +8,12 @@
       "items": {
         "type": "object",
         "properties": {
-          "id": { "type": "string", "minLength": 1 }
+          "Name": { "type": "string", "minLength": 1 },
+          "Visible": { "enum": ["Yes", "No"] },
+          "First Appearance": { "type": "string", "pattern": "^Run-\\d{3}$" },
+          "Version": { "type": "integer", "minimum": 1 }
         },
-        "required": ["id"],
+        "required": ["Name", "Visible", "First Appearance", "Version"],
         "additionalProperties": false
       }
     }

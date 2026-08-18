@@ -28,7 +28,7 @@ def main() -> None:
     ap.add_argument("--root", type=Path, default=DEFAULT_ROOT)
     root = ap.parse_args().root.resolve()
 
-    master = root / "_THE SHIP" / "Hitchhiker's Guide" / "Template Schema" / "New World Coordinates.md"
+    master = root / "_THE SHIP" / "Hitchhiker's Guide" / "Schema" / "New World Coordinates.md"
     panel = root / "_THE SHIP" / "Instrument Panel"
     atlas = panel / "Atlas of Worlds"
 

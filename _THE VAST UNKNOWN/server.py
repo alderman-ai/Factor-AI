@@ -58,16 +58,18 @@ mcp = MCPServer("THE VAST UNKNOWN")
 
 @mcp.tool()
 def scan(guy_handle: str) -> dict:
-    """Report what the engine is serving. Placeholder verb — real verbs are undesigned.
+    """Sensor sweep. Reports things the guy has discovered; hidden things show
+    only as a contact count — the fog stays behind this process.
 
     guy_handle is the acting guy's identity: a parameter on every call, never a
     process global (2026-07-28 spec — build it as a global and it dies when hosted).
     Accepted and echoed; unused until identity is designed.
     """
+    visible = [o for o in WORLD["objects"] if o["Visible"] == "Yes"]
     return {
         "guy_handle": guy_handle,
-        "object_count": len(WORLD["objects"]),
-        "objects": WORLD["objects"],
+        "visible": visible,
+        "unknown_contacts": len(WORLD["objects"]) - len(visible),
     }
 
 
