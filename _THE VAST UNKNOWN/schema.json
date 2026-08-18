@@ -3,6 +3,7 @@
   "title": "Cartridge schema v1 — the operator's thing-schema, ruled 2026-08-18 (Open Questions Q2). A thing is a file or folder in the vault; Visible says whether the operator has discovered it yet. Strict: nothing untyped gets in.",
   "type": "object",
   "properties": {
+    "run": { "type": "integer", "minimum": 1 },
     "objects": {
       "type": "array",
       "items": {
@@ -18,6 +19,6 @@
       }
     }
   },
-  "required": ["objects"],
+  "required": ["run", "objects"],
   "additionalProperties": false
 }
