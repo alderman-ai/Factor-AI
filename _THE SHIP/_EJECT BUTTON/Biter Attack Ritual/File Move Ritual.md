@@ -64,6 +64,33 @@ tripped it.
 
 ---
 
+## Decided
+
+Rulings from batch request R2 and R3. Each row was in the *Undecided* table
+below until it was ruled. Do not re-open one without saying so.
+
+| Artifact | Rule | Ruled by |
+|---|---|---|
+| `_THE SHIP/The Guy/` | **Retired — nothing spawns in the Ship at all.** The Guy's home is repo root, alongside the crate. Nothing under `_THE SHIP/` is ever deleted at a boundary, so this ritual has no Ship-side deletion step. See `Hitchhiker's Guide/Ontology/The Crate.md`. | operator, R3 |
+| `_THE VAST UNKNOWN/Crash Sites/New World NNN.json` | **Dies with the world. Not archived, not moved.** It is the engine's derived copy of a form whose master is already archived forever in `Instrument Panel/Atlas of Worlds/`. Archiving a derivation of a preserved source is how two sources of truth start. | assistant, R2 — operator may veto |
+| `_THE VAST UNKNOWN/` itself | **A new engine replaces the dead one in place.** The directory is gitignored and untracked, so a replacement enters the repo on purpose (`git add -f`) or not at all. Landing beside it would leave two directories both plausibly live, and the engine has no INDEX to say which. | assistant, R2 — operator may veto |
+
+The two assistant-ruled rows are marked because they were decided in Pass 4 of
+a batch, not by the operator directly. They are live rules until vetoed, but
+the authorship is on the record.
+
+### What the Ship-side rule now buys
+
+`Commit Ritual.md` asserts an invariant: *"a scuttle commit must delete nothing
+under `_THE SHIP/`."* Until The Guy was retired, that invariant was false, and
+the note below explains why no path-based hook could have enforced it.
+
+**It is now true by construction.** A hook checking it can never fire a false
+positive, because there is no legitimate case of a run deleting something in
+the Ship. That hook has not been written yet.
+
+---
+
 ## Undecided
 
 Each row below is a real artifact that exists right now with no rule attached.
@@ -72,12 +99,6 @@ silently.**
 
 | Artifact | The open question |
 |---|---|
-| `_THE SHIP/The Guy/` | Dies with the run, per the operator. Empty since discovery. Nothing archives it, and no rule says what happens to it at the boundary. |
-| `_THE VAST UNKNOWN/Crash Sites/New World NNN.json` | The engine's copy of the world. Left git at the scuttle, still on disk, behind the fence. Archived, deleted, or left where it lies? |
-| `_THE SHIP/_EJECT BUTTON/RUN-NNN-Assistant-Report.md` | Accumulates one per run into a flat folder. No archive directory exists for it, and none has been asked for. |
-| `_THE VAST UNKNOWN/` itself | Gitignored and on disk. Whether a new engine replaces the dead one in place, or lands beside it, is unstated. |
-
-The Guy is the sharpest of these. It is the reason the invariant *"a scuttle
-commit must delete nothing under `_THE SHIP/`"* is false and could never be
-enforced by a hook: the Ship currently mixes durable and disposable in one
-folder, so no path-based rule can tell them apart.
+| `_THE SHIP/_EJECT BUTTON/RUN-NNN-Assistant-Report.md` | Accumulates one per run into a flat folder. No archive directory exists for it, and none has been asked for. `RUN-NNN-Autopsy.md` now accumulates beside it, so the folder gains two files per run, not one. |
+| `/C-THE SHIP-10` (the crate) | Created at server launch, lives at repo root. Whether it survives a run boundary or dies with the world is unstated. See `Ontology/The Crate.md`. |
+| `/The Guy/` at repo root | Dies with the run, per the operator, who deleted it by hand this transition. What deletes it when it is not done by hand has never been specified. |
