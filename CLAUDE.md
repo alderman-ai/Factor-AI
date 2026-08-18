@@ -89,6 +89,17 @@ The **Key gameplay loop** should expose weaknesses of the operator, primarily, b
 - Because this build is about exact, granular settings. Do not guess or pattern match for things like front header variables, file output locations, or naming conventions. Enforce explicit design by the operator.
 - Do not crawl the file tree to figure out context. Always ask the operator when unsure where to look to find something.
 - This is a Factorio THEMED build, but don't go overboard. I'm still trying to demonstrate my ai engineering capabilities, so let's have fun, but not get lost in role play. This is a fun -- yet professional -- project.
+- **IMPORTANT**: do not create intake forms that require reading external docs for context. Every decision you need from me needs to present full context. Example:
+  
+```
+**9. What does processing emit?**
+**Debris decision 04**: if processing consumes the form and frees the slot, the
+loop is fill-and-clear — a chore. If output is itself an item occupying space
+downstream, there's factory pressure and a reason for belts. Decides what the
+crate even is.
+
+(i have no idea what debris decision 4 means)
+```
 
 # Architecture overview
 

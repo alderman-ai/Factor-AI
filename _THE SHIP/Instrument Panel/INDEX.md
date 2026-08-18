@@ -1,0 +1,1 @@
+This folder contains the Ship's starting locally deployed skills and durable scripts between runs

@@ -68,25 +68,55 @@ def local(iso_ts):
     return datetime.fromisoformat(iso_ts.replace("Z", "+00:00")).astimezone()
 
 
-def current_run():
+def run_boundaries():
     """
-    Derive the run number from tags rather than storing it anywhere.
+    [(run_number, opened_at)] for every run, oldest first.
 
-    A run is open until its BITER_ATTACK tag exists. So: take the highest
-    RUN_NNN namespace present, and if that run has already been scuttled,
-    we are in the next one.
+    A run opens at its PROJECT_START (run 001) or SAME_SHIP_DIFFERENT_DAY
+    (every run after). Dated by the *commit* the tag points at, not by when
+    the tag was planted -- those differ whenever a boundary is tagged late,
+    and the commit is the one that tells the truth about when the run began.
     """
-    tags = git("tag", "-l", "RUN_*").splitlines()
-    runs = sorted({t.split("/")[0] for t in tags if "/" in t})
-    if not runs:
+    raw = git(
+        "for-each-ref",
+        "--format=%(refname:short)\t%(*committerdate:iso-strict)",
+        "refs/tags",
+    )
+    out = []
+    for line in raw.splitlines():
+        if "\t" not in line:
+            continue
+        name, when = line.split("\t", 1)
+        if "/" not in name or not name.startswith("RUN_"):
+            continue
+        head, leaf = name.split("/", 1)
+        if not (leaf.startswith("PROJECT_START") or leaf.startswith("SAME_SHIP")):
+            continue
+        try:
+            out.append((int(head.split("_")[1]), datetime.fromisoformat(when).astimezone()))
+        except (IndexError, ValueError):
+            continue
+    return sorted(out, key=lambda x: x[1])
+
+
+def run_for(started):
+    """
+    Which run was open when this session ran.
+
+    Derived from the session's own start time rather than from the current
+    tag state -- otherwise re-extracting an old session after a scuttle
+    stamps it with today's run, which is how a ledger starts lying.
+    """
+    bounds = run_boundaries()
+    if not bounds:
         return "001"
-    top = runs[-1]
-    try:
-        n = int(top.split("_")[1])
-    except (IndexError, ValueError):
-        return "001"
-    scuttled = any(t.startswith(top + "/BITER_ATTACK") for t in tags)
-    return "{:03d}".format(n + 1 if scuttled else n)
+    current = bounds[0][0]
+    for n, opened in bounds:
+        if opened <= started:
+            current = n
+        else:
+            break
+    return "{:03d}".format(current)
 
 
 def commits_in_window(start, end):
@@ -172,7 +202,7 @@ def build_frontmatter(session_uuid, meta, start, end):
     trailers = sorted({c["trailer"] for c in commits if c["trailer"]})
 
     fm = ["---"]
-    fm.append("Run: " + yq(current_run()))
+    fm.append("Run: " + yq(run_for(start)))
     fm.append("Working Directory: " + yq(rel))
     fm.append("Session UUID: " + yq(session_uuid))
 
