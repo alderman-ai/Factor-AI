@@ -1,29 +1,75 @@
 # Project summary
 
-We are building a Factorio-themed harness in public, with published "engineer notes" every 1-3 days. 
+We are building a Factorio-themed harness in public. 
 
-# Why I am doing this
+# ... why?
 
-After almost 1000 hours building with Claude I've realized that even though I thought I wasn't from a technical background, that my similar number of hours in Factorio over the last decade actually significantly impacts the way I build. 
 
-So I'm building this as a fun, public facing demo. The public facing part is really important!
+## The purpose of this project
 
-## Operator improvement goals
+- to overcome my ai engineering blind spots unique to by background:
+	- Non-technical background (Marketing)
+	- Self-employed so no experience with scale or IT restrictions
+- Work towards completing my **Direction goals**
+	- Either here in this system
+	- Or by moving the problem-solution KB to other system
+- Also, on a secondary tier, create a public case study for competency legibility
+
+## Key long-term output
+
+- A KB compiled of novel failure-solution pairs
+- Better operator instincts and awareness of blind spots
+
+## Directional goal
+
+The operator's primary goal is to achieve a breakthrough in his long-term area of focus in ai engineering: building an entire, working, automated pipeline of:
+
+- Starting with a concrete problem statement
+- Expanding out that core problem into a detailed, size and scope appropriate orchestration document, with all HITL involvement at this stage.
+- Decomposing that orchestration document into a list of fully executable specs which require not HITL, and verifying that their combined completion would satisfy orchestration document DoD.
+- Each step of this process being traceable and legible post-hoc for optimization data, and cataloguing and templating proven, repeatable methodologies.
+- Then go up one more level of abstraction.
+
+## Operator improvement goals (non exhaustive)
 
 - The theme of this project will force me to get better at some of the more deterministic toolkit that might come a bit more naturally from other from a more tech-background than mine. For example:
   
-	- System architecture / design
-	- Traceable routing
-	- Loops
-	- YAML frontend
-	- pre-tool hooks
-		- especially around enforcing fence for creative constraints -- no cheating!
-	- granular subagent settings
-	- Clobber prevention with multiple parallel, working directory sessions on the same local machine / repo
-		- Not using separate worktrees though
-			- a.) this is about artifakt logistics, everyone needs to see the same state
-			- b.) as a creative constraint to be forced to learn to work around
-	- This is a non-exhaustive list.
+- System architecture / design
+- Traceable routing
+- Loops
+- YAML frontend
+- pre-tool hooks
+	- especially around enforcing fence for creative constraints -- no cheating!
+- granular subagent settings
+- Clobber prevention with multiple parallel, working directory sessions on the same local machine / repo
+	- Not using separate work trees though
+		- a.) this is about artifact logistics, everyone needs to see the same state
+		- b.) as a creative constraint to be forced to learn to work around
+- This is a non-exhaustive list.
+	  
+-  **Most of all, I should be forced to solve problems with minimal reliance on prose**
+
+## Key gameplay loop
+
+- Fail fast, often, and loudly -- but not inevitably
+	- Creative constraints cause unfamiliar problems
+	- Unfamiliar problems expose operator blind spots
+	- Operator blind spots cause mistakes identifiably to assistant
+	- Mistakes are punished purposefully, with optimization path recorded
+	- Mistake-Optimization pairs are proactively captured in detail
+	- Accumulating knowledge allows operator to progress deeper
+	- New problems, new solutions, repeat.
+
+## Ontology of this section
+
+The **Key gameplay loop** should expose weaknesses of the operator, primarily, but not limited to those listed in **Operator improvement goals**. over many, many **Key gameplay loop**s. As more and more **Key gameplay loop**s occur, the **Key long-term output** will accumulate, and NOT reset with each loop. The improvement of the **Key long-term output** over time, will help the game's focus move away from attacking key weaknesses within **Operator improvement goals**, and instead help the operator integrate said improvement into the operator's **Direction Goals**.
+
+### TL;DR
+
+- Phase 1: Assistant rapidly exposes weaknesses and helps operator learn from them.
+- Phase 2: Operator learns enough to prevent early resets: new problems new learnings
+- Phase 3: Operator applies new learnings to his primary work of executable documents
+- Phase 4: This stops being a game and is now the continuation of operator's main work
 
 # How the assistant should behave
 
@@ -48,9 +94,6 @@ So I'm building this as a fun, public facing demo. The public facing part is rea
 
 The parent folder Factor-AI, which is a public repo and has Claude initiated, will hold many subfolders. Many of those child subfolders will be claude working directories as well.
 
-## Architecture capabilities and limitations research
-
-- Lazy load -- only when needed -- "C:\Users\alder\Desktop\Factor-AI (staging)\granular-control.md"
 
 # Building in public
 

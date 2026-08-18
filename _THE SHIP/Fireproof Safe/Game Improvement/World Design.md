@@ -136,7 +136,8 @@ starting clean.
 
 **Correction on why it's served over MCP.** Resets were never the threat — git
 already survives resets, permanently and auditably, and a planet reset is a
-repo operation that never touches `The Lab/`. The real reason is **retrieval**:
+repo operation that never touches `_THE SHIP/SatNav/`. The real reason is
+**retrieval**:
 a flat directory of prose is not queryable at gate-design time.
 `science.query(stage, tier)` is.
 
@@ -689,7 +690,7 @@ which removes the accountability problem the metric was invented to solve.
 guy-session mechanic requires skills to resolve per-directory. Live pickup
 failed its only real test last session when the skill was in a parent directory;
 the own-directory test has never been run. Recorded in
-`The Lab/Global Inbox/2026-08-17_223326.md`.
+`_THE SHIP/SatNav/Incoming Transmissions/2026-08-17_223326.md`.
 
 **Obsidian Sync is a third writer.** It can dirty the git tree without passing
 through the terminal, and the cheating detector cannot distinguish a pulled file

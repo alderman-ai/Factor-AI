@@ -15,6 +15,7 @@ Smelted on:
 Version: 1
 Version date: 2026-08-17
 Changelog Location: Ore patches/Miner-001-Science/CL-Science Ore Patch
+Game version: "1"
 ---
 # Instructions
 

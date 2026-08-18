@@ -38,14 +38,15 @@ Everything is still chaos, but as it comes together, these should be the places 
 ## Daily (?) Updates
 
 You can find my and Claude's session notes in the appropriately named:
-- The Ship/Distress Beacon/Captains Log Entries/ -- me
-- The Ship/Distress Beacon/Ship's Computer Entries/ -- it
+- _THE SHIP/Distress Beacon/Captains Log Entries/ -- me
+- _THE SHIP/Distress Beacon/Ship's Computer Entries/ -- it
 
 ## Operator improvement goals
 
 - The theme of this project will force me to get better at some of the more deterministic toolkit that might come a bit more naturally from other from a more tech-background than mine. For example:
   
 	- System architecture / design
+	- Setting up an MCP 2.0
 	- Traceable routing
 	- Loops
 	- YAML frontend
@@ -60,14 +61,21 @@ You can find my and Claude's session notes in the appropriately named:
 
 ## Project Orientation
 
-Mostly everything you need is in `/_THE TUTORIAL/`
+Mostly everything you need is in `/_THE SHIP/Hitchhiker's Guide/`
 
-- Lexicon -- Glossary of terms and components
+- Lexicon.md -- Glossary of terms and components
 	- If you don't know Factorio be prepared to be a bit lost
 	- If you **DO** know Factorio be prepared to be a bit lost
-- YAML Schema/ -- yeah. this is insane. i'm insane. 
-	- Miners/Miner-001-Science/CL-Science Ore Patch/Science Ore Patch_v1
+- Template Schema/ -- yeah. this is insane. i'm insane. 
+	- Example: `_THE SHIP/Fireproof Safe/Ancient Artifacts/Science Ore Patch.md`
 - Ontology/ -- Basically the long version of the rules, how everything interacts
+
+Two more places worth knowing about:
+
+- `_THE SHIP/SatNav/` -- the navigation log. Session transcripts and science
+  entries land in `Incoming Transmissions/`.
+- `_THE SHIP/_EJECT BUTTON/` -- how a run gets scuttled, and how to read the
+  run boundaries in git afterwards.
 
 # How does Factorio inspire you?
 
