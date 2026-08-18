@@ -38,8 +38,8 @@ Everything is still chaos, but as it comes together, these should be the places 
 ## Daily (?) Updates
 
 You can find my and Claude's session notes in the appropriately named:
-- _THE SHIP/Distress Beacon/Captains Log Entries/ -- me
-- _THE SHIP/Distress Beacon/Ship's Computer Entries/ -- it
+- `_THE SHIP/Distress Beacon/Captains Log Entries/` -- me
+- `_THE SHIP/Distress Beacon/Ship's Computer Entries/` -- it
 
 ## Operator improvement goals
 
