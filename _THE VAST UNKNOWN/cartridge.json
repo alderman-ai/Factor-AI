@@ -1,7 +1,0 @@
-{
-  "run": 2,
-  "objects": [
-    { "Name": "The Guy", "Visible": "No", "First Appearance": "Run-002", "Version": 1 },
-    { "Name": "Cryobay.md", "Visible": "Yes", "First Appearance": "Run-002", "Version": 1 }
-  ]
-}
