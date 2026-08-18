@@ -1,0 +1,9 @@
+[project]
+name = "the-vast-unknown"
+version = "0.0.1"
+description = "Content-blind MCP engine skeleton. The engine loads a cartridge it knows nothing about, validates it, and serves it."
+requires-python = ">=3.12"
+dependencies = [
+    "mcp>=2,<3",
+    "jsonschema>=4",
+]

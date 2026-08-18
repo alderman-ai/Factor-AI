@@ -13,3 +13,8 @@ desktop.ini
 .env
 .env.*
 *.key
+
+# Python — the engine's machinery, not the world
+.venv/
+__pycache__/
+*.egg-info/

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cartridge schema. PLACEHOLDER pending blocking decision 02 (what fields must a thing have). Strictness is the point: nothing untyped gets in, even now.",
+  "type": "object",
+  "properties": {
+    "objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "minLength": 1 }
+        },
+        "required": ["id"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["objects"],
+  "additionalProperties": false
+}

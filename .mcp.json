@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "the-vast-unknown": {
+      "type": "stdio",
+      "command": "_THE VAST UNKNOWN/.venv/Scripts/python.exe",
+      "args": [
+        "_THE VAST UNKNOWN/server.py"
+      ],
+      "env": {}
+    }
+  }
+}
