@@ -904,3 +904,57 @@ say, and I have not assumed a location.
 
 ```
 `</operator_approval>`
+
+---
+
+# Pass 4 — what actually happened
+
+Written by the assistant after execution. One row per slot, per the protocol:
+a slot that was attempted and failed is reported as failed.
+
+| Slot | Verdict | Outcome |
+|---|---|---|
+| R1 | ADJUST | **Executed.** Full routing sweep. Every folder in `_THE SHIP/` has a README; six also have an INDEX. One folder deliberately left unrouted. |
+| R2 | ADJUST | **Partial.** Root's no-fence rule and the boot states landed. Decisions 3 and 4 are blocked behind R6. |
+| R3 | ADJUST | **Executed.** Autopsy written by Opus subagent. Crate decision recorded. The end-run skill is blocked — it has no name. |
+| R4 | APPROVED | Already executed in Pass 3. Verified: all eight approval blocks carry the subagent box. |
+| R5 | ADJUST | **Executed.** CLAUDE.md split into a reading list, duplicate skill copies deleted, `Ship Capabilities.md` written, README duplication left as approved. |
+| R6 | RETRY | **Regenerated, not executed.** New `P6` above. Awaiting a fresh ruling. |
+| R7 | APPROVED | **Executed.** Tags renamed throughout; the Instructions table names each block's tag. |
+| R8 | APPROVED | **Executed.** `Root level templates/Batch Request/` — `Batch Request v1.md` and `CHANGELOG.md`. |
+
+## Blocked, and why
+
+Nothing was routed around. Three things stopped and are reported rather than
+guessed:
+
+1. **The end-run skill.** R2 and R3 both call for it. It has never been given a
+   name — A6 says "the end run skill (I forget name)" — and where it lives and
+   what git it may touch is R6, which came back RETRY. Naming it unblocks it.
+2. **P2 decisions 3 and 4** (which cwd runs the mid-run ritual; skills stored at
+   their owner's cwd). Both are R6's question. Executing an unapproved proposal
+   because it was referenced from an approved slot is exactly the gate this
+   protocol exists to hold.
+3. **`Human Actions/`.** The one folder in the sweep left without a README. It
+   appeared mid-survey and nothing distinguishes it from `Ontology/`, which
+   already defines an Action tier. Routed in the Guide's INDEX with the question
+   attached.
+
+## Assumptions made, so they are catchable
+
+- **Template filename.** R8 approved without naming the file. Cut as
+  `Batch Request v1.md` inside a `Batch Request/` subfolder, following A1's
+  ruling that each template is a subfolder holding versions and a changelog.
+- **`The Crate.md` location.** R3's crate decision had no home specified. Filed
+  to `Hitchhiker's Guide/Ontology/`, which the Guide defines as how two
+  components meet.
+- **Two File Move Ritual rows** were decided by the assistant, not the operator,
+  and are marked as such in that document with "operator may veto."
+- **Autopsy filename.** `RUN-002-Autopsy.md`, as proposed in P3 and uncorrected.
+
+## A6 still shows its old ruling
+
+The `A6` boxes below still carry the RETRY tick and the notes that produced the
+new `P6`. They were left untouched rather than cleared — the ruling is the
+record of why the proposal was regenerated. `P6` above is new and needs a fresh
+verdict.
