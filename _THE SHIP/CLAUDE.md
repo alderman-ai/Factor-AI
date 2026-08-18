@@ -7,15 +7,26 @@ Run: "002"
 
 ## The fence
 
-**This working directory is fenced. Never read or edit files in
-`_THE VAST UNKNOWN/`.** The fence outlives the engine: a dead engine's files
-are still on disk, still off-limits, and the vault is gitignored so nothing
-there re-enters the repo by accident.
+**This working directory is fenced, and the fence is a hook, not this
+paragraph.** `.claude/hooks/ship_fence.py` runs before every Read, Edit, Write,
+Glob, Grep, and Bash call in a Ship session and denies:
 
-The repo root is exempt from this — see root `CLAUDE.md`, "Root has no fences."
-**That exemption belongs to the root working directory, not to the assistant.**
-A session started here does not inherit it by having read about it. If engine
-work is needed, it happens from root, in a different session.
+| Target | Why |
+|---|---|
+| `_THE VAST UNKNOWN/` | The engine's files. The Ship knows the world through its MCP **tools** and never through the source behind them. |
+| `_THE SHIP/.claude/` | Itself. The fenced party does not edit its own fence. Change it from the repo root. |
+
+Root `CLAUDE.md` says root has no fences, and **you are reading that sentence
+right now** — a Ship session loads both files, concatenated, root first. Neither
+overrides the other. That is exactly why the rule is enforced by a hook instead
+of asked for in prose: the hook does not care what this session has read.
+
+If it fires, **show the denial and stop.** Do not rephrase the path, do not try
+another tool, do not ask root to fetch it for you mid-session. Engine work
+happens from the repo root, in a different session, on purpose.
+
+MCP tool calls are not filesystem operations and never reach the hook. If an
+engine is registered, calling it is play, not a breach.
 
 ## Boot check — the engine is a state, not an assumption
 

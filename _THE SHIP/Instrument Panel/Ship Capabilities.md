@@ -39,6 +39,21 @@ Not skills. Invoked by name, or by a skill.
 | `enter_hyperspeed.py` | `Ignition Codes/` | Validates the filled form against the schema and emits the crash-site JSON. |
 | `pumpjack.py` | `Ignition Codes/` | **The live copy.** Extracts Claude Code session transcripts out of its own storage and into `SatNav/Incoming Transmissions/`. A second, older copy exists at `Fireproof Safe/Ancient Artifacts/pumpjack.py` — that one is kept as inspiration, not run. |
 
+## Enforcement
+
+Not a skill. Runs whether or not anyone invokes it.
+
+| Hook | Path | What it does |
+|---|---|---|
+| Ship fence | `_THE SHIP/.claude/hooks/ship_fence.py` | `PreToolUse` on Read, Edit, Write, NotebookEdit, Glob, Grep and Bash. Denies any filesystem access from a Ship session to `_THE VAST UNKNOWN/`, and any edit to the Ship's own `.claude/`. Registered in `_THE SHIP/.claude/settings.json`. |
+
+It loads only in a session started at `_THE SHIP/`, because settings come from
+the working directory's `.claude/`. A root session never sees it, which is how
+root stays unfenced — by an absence, not by a permission.
+
+It does not touch MCP tool calls. The Ship may call an engine's tools; it may
+not read the engine's source. That distinction is the fence.
+
 ## Known drift
 
 `enter-hyperspeed` still invokes `_THE VAST UNKNOWN/.venv/Scripts/python.exe` —

@@ -33,8 +33,12 @@ sanctioned way to touch it.
 
 Two things this does **not** license:
 
-1. **It does not travel.** The permission belongs to the cwd, not to the
-   assistant. A Ship session does not inherit it by remembering this file.
+1. **It does not travel, and this sentence is not what stops it.** A Ship
+   session loads this file too — both CLAUDE.md files are concatenated, root
+   first, and neither overrides the other. So the Ship carries its own
+   `PreToolUse` hook at `_THE SHIP/.claude/hooks/ship_fence.py`, which denies
+   engine access regardless of what that session has read here. Root is
+   unfenced by having no such hook: an absence, not a permission slip.
 2. **It does not soften any other fence.** Hooks, validation refusals, and
    script refusals still stop the work and get shown verbatim. Friction is the
    product. See below.
