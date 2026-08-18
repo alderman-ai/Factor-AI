@@ -54,18 +54,28 @@ root stays unfenced — by an absence, not by a permission.
 It does not touch MCP tool calls. The Ship may call an engine's tools; it may
 not read the engine's source. That distinction is the fence.
 
-## Known drift
+## Resolved drift
 
-`enter-hyperspeed` still invokes `_THE VAST UNKNOWN/.venv/Scripts/python.exe` —
-the interpreter inside the disposable, scuttled world. `chart-course` was fixed
-to plain `python`; this one was not. It has not been changed here because
-nobody ruled on it. It has not bitten yet only because the scuttle used
-`git rm --cached`, which left the venv sitting on disk.
+`enter-hyperspeed` used to invoke `_THE VAST UNKNOWN/.venv/Scripts/python.exe`
+— durable tooling running on the disposable world's interpreter. It had not
+bitten yet only because the scuttle used `git rm --cached`, which left the venv
+on disk.
 
-**Swapping in plain `python` will not be enough.** The run-002 autopsy found a
-second layer nobody had named: `enter_hyperspeed.py` imports `yaml`, and the
-only place that dependency is declared is `_THE VAST UNKNOWN/pyproject.toml` —
-the disposable world's manifest carrying the durable Ship's dependency, for a
-package the engine itself never imports. Fixing the interpreter without moving
-the declaration trades one failure for another. See
-`_EJECT BUTTON/RUN-002-Autopsy.md`.
+Fixed, and one layer deeper than the symptom. The run-002 autopsy found that
+`enter_hyperspeed.py` imported `yaml`, and the only declaration of that
+dependency was `_THE VAST UNKNOWN/pyproject.toml` — the disposable world's
+manifest carrying the durable Ship's dependency, for a package the engine never
+imported itself. Swapping the interpreter alone would have traded one failure
+for a quieter one.
+
+So the dependency was removed rather than relocated. `frontmatter()` now parses
+the flat `Key: value` block by hand, and **the Ship's durable tooling has no
+third-party dependencies at all.**
+
+What that trade cost, stated plainly: the hand parser is stricter than YAML.
+Nesting, list items, a line with no `:`, and a repeated key are each refused by
+line number instead of being accepted and reinterpreted. For a script whose job
+is refusing malformed forms, strict is the right direction — but it is a
+behaviour change, so it was verified rather than assumed. Both real forms
+(`New World 002.md` and the master template) parse identically to the old YAML
+path, including `Run` staying an integer and empty fields staying empty.

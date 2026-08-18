@@ -12,7 +12,7 @@ routing around it is the failure the fences exist to catch.
 | File | What it defines |
 |---|---|
 | `The Crate.md` | The only surface the Ship and the Guy trade across, and the rule that nothing disposable spawns inside `_THE SHIP/`. |
-| `Intake Primitives.md` | The action tiers — Research, Action, Planning, State, Variable — and the resource each one costs. |
+| `Intake Primitives.md` | The action tiers — Research, Action, Planning, State, Variable — and the resource each one costs. Its Action verbs are the **off-ship** set; the on-ship set lives in `Human Actions/`. Two scopes, not a contradiction. |
 
 ## Not this folder
 

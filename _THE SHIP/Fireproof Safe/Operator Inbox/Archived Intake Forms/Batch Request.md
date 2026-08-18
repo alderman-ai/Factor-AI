@@ -958,3 +958,91 @@ The `A6` boxes below still carry the RETRY tick and the notes that produced the
 new `P6`. They were left untouched rather than cleared — the ruling is the
 record of why the proposal was regenerated. `P6` above is new and needs a fresh
 verdict.
+
+---
+
+# `A6` — second ruling
+
+The verdict on the regenerated `P6`. The first `A6` above still shows its
+original RETRY tick and notes; that is the record of why `P6` was rewritten and
+it stays untouched.
+
+`<operator_approval>`
+- [ ] APPROVED: Execute
+- [ ] APPROVED (Subagent): Delegate to a `(empty=default)` Model
+- [x] ADJUST: Adjust accordingly to instructions in fence below, but execute
+- [ ] RETRY: Propose a new plan based on the in instructions in fence below (regenerate proposal)
+- [ ] DEFER: We will deal with this later
+
+```
+Ruled in conversation rather than in this fence, one question at a time. All
+five open points of P6 are closed:
+
+1. `.mcp.json` registers an engine in BOTH root and the Ship. The Ship calls
+   the engine's TOOLS; root edits its FILES. The fence is about what the Ship
+   is allowed to KNOW, not about a path.
+
+2. `/chart-course` is ABSORBED and deleted. One skill does report -> commit ->
+   file move -> stamp, so the commit and the move can never be separated.
+
+3. The skill is named `eject-mission`.
+
+4. The Ship may write into `_THE VAST UNKNOWN/Crash Sites/` and nowhere else in
+   the engine -- the crate pattern at the engine boundary.
+
+5. Skills: `eject-mission` and `enter-hyperspeed` are Ship-owned. `science` is
+   duplicated at BOTH root and Ship, knowingly, because a lesson cannot survive
+   a cd. `obsidian-sync` graduates to user level, `~/.claude/skills/`.
+```
+`</operator_approval>`
+
+---
+
+# Pass 5 — the batch closes
+
+Everything below was ruled by the operator in conversation and applied. This is
+the last thing written into this file before it archives.
+
+## What was ruled
+
+| # | Ruling |
+|---|---|
+| 1 | Engine registered in both `.mcp.json` files. Ship calls tools, root edits files. |
+| 2 | `/chart-course` absorbed into `eject-mission` and deleted. |
+| 3 | The run-boundary skill is named **`eject-mission`**. |
+| 4 | Ship may write to `_THE VAST UNKNOWN/Crash Sites/` only. |
+| 5 | `eject-mission` + `enter-hyperspeed` → Ship. `science` duplicated at both. `obsidian-sync` → user level. |
+| 6 | Crate access is **Action-mediated**, not permission-mediated. Nothing reaches into anything. |
+| 7 | Actions are executed by a root-invoked processor — the template stage, not a hook. |
+| 8 | A crate is a **directory**. |
+| 9 | An Action's `Pathing` and `Container` change; **the ticked verb is its identity and does not.** |
+| 10 | The crate dies with the run and its contents die with it — but anything moved into the Ship first survives. |
+| 11 | `Human Actions/` = on-ship verbs. `Intake Primitives.md` = off-ship. Two scopes, both files stay put. |
+| 12 | A crate is a general multi-source, multi-consumer component. `C-THE SHIP-10` is a **test rig**; the end state is direct directory-to-directory handoff. |
+| 13 | `enter-hyperspeed`'s yaml dependency removed outright rather than relocated. |
+| 14 | Both assistant-made rulings in `File Move Ritual.md` stand. |
+
+## Defaults taken, unopposed
+
+`Schema/Untitled/` left in place. Run reports stay in a flat folder. The Cryobay
+question is parked until an engine exists. Two stubs at root, retired when a
+third component appears.
+
+## Built in the same pass
+
+The Ship's fence — `_THE SHIP/.claude/hooks/ship_fence.py`. The first constraint
+in this project that is **enforced rather than described.** It exists because
+the operator's assumption that a local `CLAUDE.md` overrides a parent one is
+false: both load, concatenated, and contradictions resolve arbitrarily. Prose
+could not hold that fence. A `PreToolUse` hook can.
+
+## Still open when this batch closed
+
+- **`eject-mission` is not built.** Every decision it needed now exists; the
+  build does not.
+- **The script hole in the fence.** A Ship session cannot `cat` the engine, but
+  a script it runs can still write anywhere in it. Recorded, not patched.
+- **Capacity enforcement.** Nothing counts what is in a crate.
+- **`chart-course`'s gate rationale is factually wrong** — the autopsy showed
+  run 001 *was* closed; what was missing was the toll. The corrected reason has
+  to carry into `eject-mission` rather than the false one.

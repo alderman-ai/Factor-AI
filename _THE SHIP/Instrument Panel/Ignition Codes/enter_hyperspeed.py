@@ -13,8 +13,6 @@ import re
 import sys
 from pathlib import Path
 
-import yaml
-
 DEFAULT_ROOT = Path(__file__).resolve().parents[3]
 NW = re.compile(r"^New World (\d{3})\.md$")
 DIFFICULTY = {"Easy", "Normal", "Hard"}
@@ -38,7 +36,41 @@ def refuse(precondition: str, observed: str) -> None:
     sys.exit(1)
 
 
+INT = re.compile(r"^[+-]?\d+$")
+
+
+def scalar(raw: str):
+    """One frontmatter value, typed the way this form's schema expects.
+
+    Deliberately narrow. A world form's frontmatter is flat `Key: value` and
+    nothing else, so this handles exactly that and refuses the rest rather
+    than guessing. Empty -> None, digits -> int, everything else -> str.
+    """
+    v = raw.strip()
+    if v in ("", "null", "~"):
+        return None
+    if len(v) >= 2 and v[0] == v[-1] and v[0] in ("'", '"'):
+        return v[1:-1]
+    if INT.match(v):
+        return int(v)
+    return v
+
+
 def frontmatter(text: str, name: str) -> dict:
+    """Parse the leading `---` block.
+
+    Hand-rolled on purpose. This script is durable Ship tooling, and the only
+    declaration of its former yaml dependency lived in the engine's
+    pyproject.toml -- inside the disposable world. Durable tooling that needs
+    the planet installed is the same fault as durable tooling that runs the
+    planet's interpreter, only quieter. It now depends on nothing.
+
+    The trade that buys: this is stricter than a YAML parser. Anything a world
+    form has no business containing -- nesting, lists, anchors, multi-line
+    values -- is REFUSED by line number instead of being silently accepted and
+    reinterpreted. For a script whose entire job is refusing malformed forms,
+    strict is the correct direction.
+    """
     lines = text.splitlines()
     if not lines or lines[0].strip() != "---":
         refuse(f"{name} opens with a '---' frontmatter fence", "first line is not '---'")
@@ -46,12 +78,33 @@ def frontmatter(text: str, name: str) -> dict:
         end = next(i for i, ln in enumerate(lines[1:], start=1) if ln.strip() == "---")
     except StopIteration:
         refuse(f"{name} frontmatter is closed by a second '---'", "no closing fence found")
-    try:
-        fm = yaml.safe_load("\n".join(lines[1:end]))
-    except yaml.YAMLError as e:
-        refuse(f"{name} frontmatter parses as YAML", str(e))
-    if not isinstance(fm, dict):
-        refuse(f"{name} frontmatter is a key/value mapping", f"parsed as {type(fm).__name__}")
+
+    fm: dict = {}
+    for n, ln in enumerate(lines[1:end], start=2):
+        if not ln.strip() or ln.lstrip().startswith("#"):
+            continue
+        if ln[:1] in (" ", "\t"):
+            refuse(
+                f"{name} frontmatter is flat `Key: value` lines",
+                f"line {n} is indented -- nested values are not part of this schema: {ln!r}",
+            )
+        if ln.lstrip().startswith("- "):
+            refuse(
+                f"{name} frontmatter is flat `Key: value` lines",
+                f"line {n} is a list item -- no field in this schema takes a list: {ln!r}",
+            )
+        if ":" not in ln:
+            refuse(
+                f"{name} frontmatter is flat `Key: value` lines",
+                f"line {n} has no ':' separator: {ln!r}",
+            )
+        key, _, raw = ln.partition(":")
+        key = key.strip()
+        if not key:
+            refuse(f"{name} frontmatter keys are non-empty", f"line {n}: {ln!r}")
+        if key in fm:
+            refuse(f"{name} declares each key once", f"line {n} repeats {key!r}")
+        fm[key] = scalar(raw)
     return fm
 
 

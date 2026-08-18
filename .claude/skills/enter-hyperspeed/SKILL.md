@@ -7,7 +7,7 @@ description: Validate the filled New World Coordinates form on the Instrument Pa
 
 Run exactly this, from the repository root:
 
-    "_THE VAST UNKNOWN/.venv/Scripts/python.exe" "_THE SHIP/Instrument Panel/Ignition Codes/enter_hyperspeed.py"
+    python "_THE SHIP/Instrument Panel/Ignition Codes/enter_hyperspeed.py"
 
 Rules:
 
