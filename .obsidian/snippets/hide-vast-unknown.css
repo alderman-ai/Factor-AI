@@ -1,0 +1,14 @@
+/* Fog of war: _THE VAST UNKNOWN does not exist in this vault.
+   Hides the engine folder from Obsidian's file explorer. Pair with the
+   userIgnoreFilters entry in app.json, which keeps it out of search,
+   quick switcher, links, and the graph. */
+
+.nav-folder:has(> .nav-folder-title[data-path="_THE VAST UNKNOWN"]) {
+  display: none;
+}
+
+/* Fallback for renderers without :has() support */
+.nav-folder-title[data-path="_THE VAST UNKNOWN"],
+.nav-folder-title[data-path="_THE VAST UNKNOWN"] + .nav-folder-children {
+  display: none;
+}
