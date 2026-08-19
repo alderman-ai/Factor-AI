@@ -67,3 +67,35 @@ and maybe power isn't consumed... I think we landed on that. It sits in a genera
 
 So game play will be ... power station IS NOT generating power on loop. It has a fixed amount. It's just moving the power around. And there's not enough power for everything. So first it powers the mine to generate enough power to get it to the Demo/Belt-003. Then then power needs to be moved via the station to the top levle generator for the transport to bring it to Crate. (fun! ?)
 
+### Transport -- 12:06
+
+Belt is to Substation as Inserter is to Electric Pole
+Belts move artifacts up and down a tree, inserters horizontal. Both tag routing
+
+## Routing tags
+
+I think it's not scalable to have them in YAML header. Maybe a log on each artifact that lists routing item and time? Maybe only the Poles and Inserters leave routing info? 
+
+Attempt: Power Station to Substation-001 HHmm (Success | Failed)
+
+(ughhh how to I build tables in md)
+
+Theres so many primitives I need to build for all this to work the first time
+
+## 12:15
+
+Ok, for now the execution of movement will just be root Faktor-AI/ not building a new parent folder for all this. But Now that's actually a problem because I don't want to be cwd's into a parent and child simultaneously?? Do I? lets see if it break anything YOLO
+
+ok that's a simple skill to build (the god laugh)
+
+hard part is, how to know if the powered automation is alive or not
+
+**THIS IS WHY YOU START WITH HAND MINING IN THE GAME WOULDN"T THAT BE A BETTER DEMO 1???**
+
+Ok, the guy processes Adrenaline templated intake to do his actions. ... maybe power IS consumed? Huge fork ... :( Because it's not consumed via movable, it's executable file vs .... ???
+
+## 12:21
+
+Ok, let's work backwards. dod is human moves ore from crate to ship. Let's write that first.
+
+Commit (sub demo 1 begins)
