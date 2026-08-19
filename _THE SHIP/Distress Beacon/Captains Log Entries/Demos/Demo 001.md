@@ -99,3 +99,14 @@ Ok, the guy processes Adrenaline templated intake to do his actions. ... maybe p
 Ok, let's work backwards. dod is human moves ore from crate to ship. Let's write that first.
 
 Commit (sub demo 1 begins)
+
+1226 (omg im literally screenshotting factorio images to turn into icos for the folders FOCUS!)
+
+noooww looking up an obsidan plugin for note duplication naming configuration 🙃
+
+I have a meeting at 13 ... PLEEEASE don't forget to go to your meeting
+
+
+ooooh i can record audio notes via obsidian and then think aloud and not type so much cool! (next time)
+
+hmm didn't find name duplicater ... but Context Titles look cool for other projects FOCUS! 1237
