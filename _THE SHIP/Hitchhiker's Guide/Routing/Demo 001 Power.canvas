@@ -1,0 +1,20 @@
+{
+	"nodes":[
+		{"id":"grp-root","type":"group","x":-260,"y":-220,"width":1440,"height":980,"label":"DEMO_001_Ore-Power/  (demo root)"},
+		{"id":"grp-mine","type":"group","x":0,"y":400,"width":1080,"height":280,"color":"6","label":"@Mining Station/"},
+		{"id":"suba","type":"text","text":"### Substation-001-a\n`S1A`\n\ntop end of Substation-001","x":740,"y":-80,"width":300,"height":140,"color":"4"},
+		{"id":"subb","type":"text","text":"### Substation-001-b\n`S1B`\n\ndeep end of Substation-001","x":740,"y":480,"width":300,"height":120,"color":"4"},
+		{"id":"sink","type":"text","text":"**Every machine in this directory**\n\nPower is **binary**. If `Substation-001-b` holds enough for all of them, they all function. If not, none do.","x":40,"y":480,"width":560,"height":120,"color":"5"},
+		{"id":"analogy","type":"text","text":"## Power mirrors transport\n\n```\nElectric Pole : Substation\n        ::\n    Inserter : Belt\n```\n\n**Poles and inserters** are artifacts — a file sitting in the directory whose children it moves things between. Horizontal only.\n\n**Substations and belts** are directories with an end at each of two levels. They are the only thing that crosses a level, and they are their own mover: nothing carries between the two ends.\n\nSo `Substation-001-a` / `-b` is one substation, exactly as `Belt-001-a-i` / `-b-i` is one belt.","x":1260,"y":-220,"width":620,"height":420,"color":"3"},
+		{"id":"flow","type":"text","text":"### The power path\n\n**@Power Station → Electric pole-001 → Substation-001-a**\nHorizontal, all children of the demo root. The pole is what permits it.\n\n**Substation-001-a → Substation-001-b**\nDown one level. One substation with an end at each, so nothing carries the power between them — the substation is the carrier.\n\n**Substation-001-b → the machines around it**\nEverything in `@Mining Station/` runs, or nothing does.\n\n---\n\n### Note the direction\n\n**Ore climbs. Power descends.** Ore is mined below and delivered up to the Ship; power is held at the root and pushed down to the mine. The two canvases run opposite ways through the same tree, which is why they are two canvases.","x":1260,"y":220,"width":620,"height":460},
+		{"id":"open","type":"text","text":"### Not decided yet\n\n**No pole in `@Mining Station/`.** Poles enable horizontal movement within a directory. There is one at the root and none in the mine — so as drawn, nothing can move power sideways down there. Either that is correct or a pole is missing.\n\n**Do substations have capacity?** Belts took a roman numeral (`-i`, one slot per end). Substations were renamed without one. If a substation *holds* power it needs a limit; if it only *routes* it, it does not — and then something else has to hold it.\n\n**Is power consumed?** The 11:52 note says it sits in a holder and gates machines binarily rather than being spent. If nothing consumes it, there is no `CONSUMED/` for power and no `-e` sentinel either.\n\n**`Power Limit: \"4\"`** appears in `Templates/Resources/DEMO-POWER.md` with no home yet.\n\n**`Electric pole-001.md`** has a lowercase `p` where `Inserter-001.md` is capitalised. Code derivation gives `EP1` either way, but it will bite once something matches on names.","x":1260,"y":700,"width":620,"height":440,"color":"1"},
+		{"id":"powerstn","type":"text","text":"### @Power Station/\n`PS`\n\n**source** — holds a fixed amount and directs where it goes","x":-110,"y":-80,"width":300,"height":140,"color":"2"},
+		{"id":"pole","type":"text","text":"**Electric pole-001.md**\n`EP1`\n\n*artifact, not a folder*","x":360,"y":-80,"width":260,"height":140,"color":"3"}
+	],
+	"edges":[
+		{"id":"p1","fromNode":"powerstn","fromSide":"right","toNode":"pole","toSide":"left","color":"4","label":"horizontal"},
+		{"id":"p2","fromNode":"pole","fromSide":"right","toNode":"suba","toSide":"left","color":"4","label":"via EP1"},
+		{"id":"p3","fromNode":"suba","fromSide":"bottom","toNode":"subb","toSide":"top","color":"4","label":"down one level — the substation is the mover"},
+		{"id":"p4","fromNode":"subb","fromSide":"left","toNode":"sink","toSide":"right","color":"2","label":"powers"}
+	]
+}

@@ -1,0 +1,26 @@
+{
+	"nodes":[
+		{"id":"grp-root","type":"group","x":-60,"y":-360,"width":2560,"height":1120,"label":"DEMO_001_Ore-Power/  (demo root)"},
+		{"id":"grp-mine","type":"group","x":0,"y":280,"width":1460,"height":400,"color":"6","label":"@Mining Station/"},
+		{"id":"expl","type":"text","text":"### r1 · Ore Patch → Belt-001-b   `r1tB1BvI2`\n\nHorizontal. Both are children of `@Mining Station/`, and `Inserter-002.md` sits in that directory — which is what permits the move at all. The inserter is named in the hop because the audit can go and check it is really there.\n\n---\n\n### r2 · Belt-001-b → Belt-001-a   `r2tB1A`\n\nThe climb. Belt-001 is **one belt with an end at each level**, so nothing carries the ore between them — the belt is the carrier. That is why this is the only hop with nothing in the chain between the two containers. The end letter changing from `B` to `A` is the entire record of the traversal.\n\n---\n\n### r3 · Belt-001-a → Crate-001-v   `r3tC1vI1`\n\nHorizontal again, both children of the demo root, through `Inserter-001.md` sitting there.\n\n---\n\n### r4 · Crate-001-v → Demo Ship   `r4tSHIPwHAbGUY`\n\nNot a machine. @The Guy stands in the chain where a mover would, because for this hop he **is** the mover — a Human Action performed through an ADRENALINE work order. Then `-e` closes the string: it arrived.","x":2620,"y":-140,"width":620,"height":640},
+		{"id":"legend","type":"text","text":"### Reading the diagram\n\nThe chain is the ore's physical journey, and **movers stand in the chain** — an inserter or an actor sits between the two containers it moved the ore between, because that is literally where it acts.\n\n**Green** — containers. The roman numeral in a folder name is that folder's capacity.\n**Yellow** — inserters. Artifacts, *not* directories: a file living in the directory whose children it moves things between.\n**Cyan** — the human end. @The Guy, and the Ship he delivers to.\n**Orange** — an action kind, hanging perpendicular off whoever performs it. It says *what sort of action*, not where the ore went.\n\nEvery arrow that arrives at a container carries the signature fragment recorded there. A missing `-e` means the ore never arrived, and the last fragment says how far it got.\n\n**Power is not on this canvas.** Substations and electric poles live on `Demo 001 Power.canvas`. Nothing here moves without them.","x":2620,"y":520,"width":620,"height":380,"color":"3"},
+		{"id":"belta","type":"text","text":"### Belt-001-a-i\n`B1A` · 1 slot\n\ntop end of Belt-001","x":80,"y":-180,"width":300,"height":120,"color":"4"},
+		{"id":"beltb","type":"text","text":"### Belt-001-b-i\n`B1B` · 1 slot\n\ndeep end of Belt-001","x":80,"y":380,"width":300,"height":120,"color":"4"},
+		{"id":"guy","type":"text","text":"### @The Guy/\n`GUY` · fenced cwd\n\nfires the ADRENALINE","x":1440,"y":-180,"width":300,"height":120,"color":"5"},
+		{"id":"ship","type":"text","text":"### Demo Ship\n`SHIP`\n\n**DoD:** 5 ore, from the patch","x":1440,"y":120,"width":300,"height":120,"color":"5"},
+		{"id":"crate","type":"text","text":"### Crate-001-v\n`C1` · 5 slots\n\n*five, like the DoD*","x":950,"y":-180,"width":300,"height":120,"color":"4"},
+		{"id":"orepatch","type":"text","text":"### Ore Patch-001-iii\n`OP1` · 3 slots\n\n**origin**","x":950,"y":380,"width":300,"height":120,"color":"4"},
+		{"id":"ins2","type":"text","text":"**Inserter-002.md**\n`I2`\n\n*artifact, not a folder*","x":540,"y":500,"width":260,"height":120,"color":"3"},
+		{"id":"ins1","type":"text","text":"**Inserter-001.md**\n`I1`\n\n*artifact, not a folder*","x":540,"y":-310,"width":260,"height":120,"color":"3"},
+		{"id":"humanaction","type":"text","text":"**Human Action**\n`HA`","x":1900,"y":-170,"width":260,"height":100,"color":"2"},
+		{"id":"sig","type":"text","text":"## The correct route\n\n```\no-OP1-r1tB1BvI2-r2tB1A-r3tC1vI1-r4tSHIPwHAbGUY-e\n```\n\nOre that arrives at the Ship with exactly this string counts. Anything else does not.","x":1700,"y":380,"width":660,"height":240,"color":"#b02121"}
+	],
+	"edges":[
+		{"id":"e3","fromNode":"beltb","fromSide":"top","toNode":"belta","toSide":"bottom","color":"4","label":"r2tB1A "},
+		{"id":"e4","fromNode":"belta","fromSide":"right","toNode":"crate","toSide":"left","color":"4","label":"r3tC1vI1"},
+		{"id":"e6","fromNode":"crate","fromSide":"right","toNode":"guy","toSide":"left","color":"4"},
+		{"id":"f87277ebfefc196b","fromNode":"guy","fromSide":"bottom","toNode":"ship","toSide":"top","color":"4","label":"r4tSHIPwHAbGUY"},
+		{"id":"4281cfbd64eb7623","fromNode":"orepatch","fromSide":"left","toNode":"beltb","toSide":"right","color":"4","label":"r1tB1BvI2"},
+		{"id":"229a188651c3e7b6","fromNode":"guy","fromSide":"right","toNode":"humanaction","toSide":"left","color":"1","label":"with"}
+	]
+}
