@@ -110,3 +110,6 @@ I have a meeting at 13 ... PLEEEASE don't forget to go to your meeting
 ooooh i can record audio notes via obsidian and then think aloud and not type so much cool! (next time)
 
 hmm didn't find name duplicater ... but Context Titles look cool for other projects FOCUS! **1237**
+
+
+**12:50** just realized i didn't have gitkeeps in any folders so half the contents were missing AND realizing we're going to have to solve the parent-child problem, which is actully a thing. I guess just designate fence to include sister dirs in each cwd claude.md?
