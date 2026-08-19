@@ -6,7 +6,8 @@ documents. Break the shape and a script refuses rather than adapting.
 | File | Consumed by | What happens if it is wrong |
 |---|---|---|
 | `New World Coordinates.md` | `Ignition Codes/chart_course.py` stamps a blank copy onto the Instrument Panel; `enter_hyperspeed.py` validates the filled result. | `chart_course.py` refuses if this file is missing or has no empty `Run:` slot. Shown verbatim, never worked around. |
-| `The Guy.md` | Not yet wired to a script. | — |
+| `ADRENALINE Rules.md` | `Verification Scripts/adrenaline.py` reads its frontmatter and its `## The rules` table, and runs exactly what the table says. | `adrenaline.py` HALTs — missing file, missing frontmatter key, no rules table, or a verb the script has no function for. Nothing is checked and nothing is run. |
+| `The Guy.md` | Listed here but **not on disk**. Either it was never written or it moved. Unresolved. | — |
 
 ## Editing rules
 

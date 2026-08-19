@@ -8,6 +8,8 @@
     "Mined on": "datetime",
     "Max": "number",
     "First Used": "number",
-    "Human Actions": "multitext"
+    "Human Actions": "multitext",
+    "Mined at": "datetime",
+    "Created": "datetime"
   }
 }
