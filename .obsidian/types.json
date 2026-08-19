@@ -5,6 +5,9 @@
     "tags": "tags",
     "Version": "number",
     "Smelted on": "datetime",
-    "Mined on": "datetime"
+    "Mined on": "datetime",
+    "Max": "number",
+    "First Used": "number",
+    "Human Actions": "multitext"
   }
 }
