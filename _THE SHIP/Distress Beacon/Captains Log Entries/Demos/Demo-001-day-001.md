@@ -191,3 +191,43 @@ this is ai psychosis i'm going home
 also, fill need times for all routes... but checksums will contain only start and end (in case theres a timelimit before decay ...... AI PSYCHOSIS)
 
 o-202608191704-op1-r1tb2vi2-r2tb1-r3tc1vi1-r4tSHIPwHAbGUY-202608191819-e
+
+
+## 1930
+Sigh... i made a couple of mermaid diagrams
+
+- DEMO_001_Ore-Power/Demo Ship/Demo 001 Routing.canvas
+- DEMO_001_Ore-Power/Demo Ship/Demo 001 Power.canvas
+
+# Skills we need
+
+### Power Station
+- /power (substation) -- if only one substation in dir, no arg needed
+- /cut-power (all power returns to power station)
+	- Only through same dir
+	- Only with Electric Pole in dir
+- /polarity-swap (substation with power) -- power from substation transfers from one of pair to other // can target station outside dir // cuts all loops of automations being powered
+- /surge (substation with SUFFICIENT power) all mechanical automations start their loop skill
+	- Ore Patch -- 60s
+	- Inserter 9s
+	- Belt - 4s
+	  
+Ummm what happens if they loop at once? CAN they loop at once? And I feel like the transport stuff should have different cwd than power, maybe a case FOR the /@starter base/
+
+How would starter base know that its things are powered
+
+### The Guy
+/human-skill (completed ADRENALINE resource artifact)
+
+## ok for real, done 1946
+
+## 2155
+# Roles
+- Guy, pre automation nonsense, then defense of bass. Biters come, give 5 min warning their going to "delete" something (gitmove to /NOM-NOM-NOM/) unless Guy has the resources to do Combat (stone ore) which can pretooluse move hook to shut down attack 
+- Which means Biters Nest will be cwd component soon.
+- So will lab. Right now this is basically a SWE project, I need to set up some kind of learning loop. Compress learnings into science... ??? ... Unlock stuff?
+- Starter base - controls transport and assemblers ... And smelters? Or smelters moved to assemblers for ease, distribution?
+- Assemblers - Making Shit. And yes, smelting too. Smelting components and then directly into the assembler seems good. Or smelters could live in mines... That's also a thing... Not much else happening in mines. 
+- Ore will have thematic intake templates that will actually shake the game play. Copper ore are questions, iron ore are tasks. Smelters choose 5 to compile together (maybe once there's 20) into unique combinations that will provide data on the limits/flexibility in research for semantically different topics. Hm. Maybe can't use subagents or what's the point... : /
+- roboport will be between bases
+
